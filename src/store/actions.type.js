@@ -1,0 +1,1 @@
+export const WS_USER_LOGIN = "login";
