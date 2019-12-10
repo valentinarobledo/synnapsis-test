@@ -5,19 +5,19 @@
 			<div class="form">
 				<div class="title">Iniciar Sesión</div>
 				<form v-on:submit.prevent="login()">
-				<div class="text">Usuario</div>
-				<div class="input-group">
-					<input type="text" class="input-group" v-model="form.username">
-				</div>
-				<div class="text">Contraseña</div>
-				<div class="input-group">
-					<input type="password" class="input-group" v-model="form.password">
-				</div>
+					<div class="text">Usuario</div>
+						<div class="input-group">
+							<input type="text" class="input-group" v-model="form.nombre">
+						</div>
+						<div class="text">Contraseña</div>
+						<div class="input-group">
+							<input type="password" class="input-group" v-model="form.password">
+						</div>
 
-				<button class="btn btn-in" type="submit">
-					<router-link class="btn-link" to="/seccion">Ingresar</router-link>
-				</button>
-			</form>
+					<button class="btn btn-in" type="submit">
+						Ingresar
+					</button>
+				</form>
 			</div>
 		</div>
 		<div class="col-md-8">
@@ -42,16 +42,18 @@ export default {
   components: {
    
   },
+ 
   data: function() {
-	    return {
-	      	form: {}
+		return {
+			form: {}
 		}
 	},
 	methods: {
 		login () {
-			this.$store.dispatch(LOGIN, this.form)
-			.then( () => this.$router.push({name: "seccion" }))
-			.catch( error => this._handleError(error) );
+			this.$store.dispatch(WS_USER_LOGIN, this.form)
+			
+			// .then( () => this.$router.push({name: "seccion" }))
+			// .catch( error => this._handleError(error) );
 		},
 		_handleError (error) {
 			this.form.password = "";
