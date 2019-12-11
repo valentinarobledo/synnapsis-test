@@ -51,9 +51,8 @@ export default {
 	methods: {
 		login () {
 			this.$store.dispatch(WS_USER_LOGIN, this.form)
-			
-			// .then( () => this.$router.push({name: "seccion" }))
-			// .catch( error => this._handleError(error) );
+			.then( () => this.$router.push({name: "seccion" }))
+			.catch( error => this._handleError(error) );
 		},
 		_handleError (error) {
 			this.form.password = "";
