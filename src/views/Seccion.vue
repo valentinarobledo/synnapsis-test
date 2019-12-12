@@ -27,31 +27,25 @@
 	  </b-navbar>
 	  <b-modal id="Crud" ref="Crud" hide-footer size="md" centered title="Secciones">
 	 		<div>
-	 			<input type="text" class="input-group" placeholder="Código">
-	 			<input type="text" class="input-group" placeholder="Descripción"></br>
-	 			<button class="btn btn-add">Agregar</button>
+	 			<input type="text" class="input-group" placeholder="Código" v-model="form.codigo">
+	 			<input type="text" class="input-group" placeholder="Descripción" v-model="form.descripcion"></br>
+	 			<button class="btn btn-add" v-on:click="add()">Agregar</button>
 	 			</br>
 	 			<table>
 	 				<thead>
 	 					<tr>
 	 						<th></th>
 	 						<th>Código</th>
-	 						<th> </th>
-	 						<th> </th>
-	 						<th> </th>
 	 						<th>Descripción</th>
 	 						<th></th>
 	 					</tr>
 	 				</thead>
 	 				<tbody>
-	 					<tr>
-	 						<td></td>
-	 						<td>01</td>
-	 						<td></td>
-	 						<td> </td>
-	 						<td> </td>
-	 						<td>Hilos</td>
-	 						<td><button class="btn btn-edit">Editar</button></td>
+	 					<tr v-for="(item, index) in seccion" :key="index">
+	 						<td>{{index +1}}</td>
+	 						<td>{{item.codigo}}</td>
+	 						<td>{{item.descripcion}}</td>
+	 						<td><button class="btn btn-edit" v-on:click="edit()">Editar</button></td>
 	 					</tr>
 	 				</tbody>
 	 			</table>
@@ -59,6 +53,32 @@
 	 	</b-modal>
 </div>
 </template>
+
+<script>
+import { mapGetters } from "vuex";
+import {
+WS_USER_LOGIN
+
+} from "@/store/actions.type";
+
+
+export default {
+  name: 'seccion',
+  components: {
+   
+  },
+ 
+  data: function() {
+		return {
+			form: {}
+		}
+	},
+	methods: {
+		
+	}
+}	
+
+</script>
 
 <style lang="scss">
 .btn-secondary{
