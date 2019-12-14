@@ -27,8 +27,6 @@ const actions = {
       return Promise.resolve(data.token);
     });
   },
-
-
   
 };
 
