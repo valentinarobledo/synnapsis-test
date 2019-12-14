@@ -56,7 +56,7 @@ export default {
 		},
 		_handleError (error) {
 			this.form.password = "";
-			this.$snotify.error(error.message);
+			
 		}
 	}
 }

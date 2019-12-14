@@ -1,6 +1,6 @@
 import ApiService from "@/common/api.service";
 import { 
-WS_SECCION_CREAR
+WS_SECCION_CREAR,
 WS_SECCION_LISTAR
 
 } from "../actions.type";
@@ -11,46 +11,32 @@ SET_SECCION
  } from "../mutations.type";
 
 const state = {
- groups: []
+ seccion: []
 };
 
 const getters = {
-  groups(state) {
- 	return groups.state
+  seccion(state) {
+ 	return seccion.state
  }
 };
 
 const actions = {
-  [GROUPS_INDEX](context, data){
-  	return ApiService.post("group/list", data).then( result => {
-  		context.commit(SET_GROUPS, result );
+  [WS_SECCION_LISTAR](context, data){
+  	return ApiService.post("seccion/listar", data).then( result => {
+  		context.commit(SET_SECCION, result );
   		return Promise.resolve(result)
   	})
   },
-  [GROUP_VIEW](context, data) {
-    return ApiService.post("group/view", data);
-  },
-  [GROUP_EDIT](context, data) {
-    return ApiService.post("group/edit", data);
-  },
-  [GROUP_DELETE](context, data) {
-    return ApiService.post("group/delete", data);
-  },
-  [GROUP_DELETESTUDENT](context, data) {
-    return ApiService.post("group/deleteStudent", data);
-  },
-  [GROUP_ADDSTUDENT](context, data){
-    return ApiService.post("group/add", data);
-  },
-  [GROUP_CREATE](context, data) {
-    return ApiService.post("group/create", data);
+
+  [WS_SECCION_CREAR](context, data) {
+    return ApiService.post("seccion/crear", data);
   }
   
 };
 
 const mutations = {
- [SET_GROUPS](context, data){
- 	context.groups = data
+ [SET_SECCION](context, data){
+ 	context.seccion = data
  }
 };
 
